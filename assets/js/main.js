@@ -26,6 +26,7 @@
 
 ==================================*/
 
+// $('html, body').hide()
 /*========Window Load Function========*/
 $(window).on("load", function() {
 
@@ -55,6 +56,9 @@ $(function() {
 
     "use strict";
     var wind = $(window);
+
+    
+        
 
     /*========ScrollIt Setup========*/
     $.scrollIt({
