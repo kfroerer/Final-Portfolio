@@ -317,6 +317,29 @@
                             </div>
                         </div>
                     </div>
+
+                     <!--Portfolio Item-->
+                     <div class="col-lg-4 col-md-6 item front-end">
+                        <div class="portfolio-item">
+                            <img src="assets/images/portfolio/Screenshot (36).png" alt="">
+                            <div class="item-overlay">
+                                <h6><a href="">National Parks Memory</a></h6>
+                                <h6>A new twist on a classic game!</h6>
+                                <div class="icons">
+                                    <span class="icon">
+                                            <a href="https://www.github.com/kfroerer/National-Parks-Memory" target="_blank">
+                                                <i class="fab fa-github-square"></i>
+                                            </a>
+                                        </span>
+                                    <span class="icon">
+                                        <a href="https://kfroerer.github.io/National-Parks-Memory/" target="_blank">
+                                           <i class="fas fa-link"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
         </section>
         <!--Portfolio Section End-->
@@ -408,7 +431,7 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <!--Contact Form-->
-                        <form id='contact-form' method='POST'><input type='hidden' name='form-name' value='contactForm' />
+                        <form id='contact-form' action="https://formspree.io/kfroerer@gmail.com" method='POST'><input type='hidden' name='form-name' value='contactForm' />
                             <div class="row">
                                <div class="col-md-6">
                                   <div class="form-group">
@@ -417,7 +440,7 @@
                                </div>
                                <div class="col-md-6">
                                   <div class="form-group">
-                                     <input type="email" name="email" class="form-control" id="email" placeholder="Email *" required="required">
+                                     <input type="email" name="_replyto" class="form-control" id="email" placeholder="Email *" required="required">
                                   </div>
                                </div>
                                <div class="col-md-12">
@@ -427,7 +450,7 @@
                                </div>
                                 <div class="col-md-12 text-center">
                                     <!--contact button-->
-                                    <button id="contact-submit" class="div-btn">
+                                    <button id="contacSubmit" type=submit value="Send" class="div-btn">
                                         Send Message
                                     </button>
                                 </div>
@@ -489,8 +512,33 @@
         <script src="assets/js/jquery.magnific-popup.min.js"></script>
         <script src="assets/js/plugins.js"></script>
         <!--Site Main js-->
-        <script src="assets/js/contact.js"></script>
+        <!-- <script src="assets/js/contact.js"></script> -->
         <script src="assets/js/main.js"></script>
+        <script>
+            $(document).ready(function() {
+            $('#contact-form').submit(function(event) {
+                var name    = document.getElementById('first-name');
+                var email   = document.getElementById('#email');
+                var message = document.getElementById('#description');
+
+                if (!name.value || !email.value || !message.value) {
+                alert("Please check your entries");
+                return false;
+                } else {
+                $.ajax({
+                    method: 'POST',
+                    url: 'https://formspree.io/kfroerer@gmail.com',
+                    data: $(this).serialize(),
+                    dataType: 'json'
+                });
+                event.preventDefault();
+                $(this).get(0).reset();
+                alert("Message sent");
+                }
+            });
+            });
+        
+        </script>
 
     </body>
 </html>
